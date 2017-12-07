@@ -22,6 +22,11 @@
 
 (defn parse-line
   [l]
-  (map #(Integer/parseInt %) (clojure.string/split l #" ")))
+  (map #(Integer/parseInt %) (str/split l #" ")))
 
 ;; entry point
+(def a (parse-line (read-line)))
+(def b (parse-line (read-line)))
+(def lr (parse-line (read-line)))
+(println (summation area (first lr) (last lr) a b))
+(println (summation volume (first lr) (last lr) a b))
