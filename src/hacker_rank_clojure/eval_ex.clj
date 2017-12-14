@@ -13,7 +13,7 @@
 ;; entry point
 (let [n (Integer/parseInt (read-line))]
  (loop [i n]
-  (when (> a0 0)
+  (when (> i 0)
     (let [x (Float/parseFloat (read-line))]
       (println (eval-ex x)))
     (recur (- i 1)))))
