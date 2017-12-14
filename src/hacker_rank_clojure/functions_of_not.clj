@@ -5,7 +5,9 @@
 (defn functions-or-not
   "https://www.hackerrank.com/challenges/functions-or-not/problem"
   [ps]
-  )
+  (let [s (count (set ps))
+        m (count (into {} (set ps)))]
+    (if (= s m) "YES" "NO")))
 
 ;; entry point
 (let [t (Integer/parseInt (read-line))]

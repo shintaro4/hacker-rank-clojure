@@ -5,4 +5,5 @@
 (deftest test-functions-or-not
   (testing "sample I/O."
     (is (= "YES" (functions-or-not [[1 1] [2 2] [3 3]])))
+    (is (= "NO" (functions-or-not [[1 1] [1 2] [3 3]])))
     (is (= "YES" (functions-or-not [[1 2] [2 4] [3 6] [4 8]])))))
