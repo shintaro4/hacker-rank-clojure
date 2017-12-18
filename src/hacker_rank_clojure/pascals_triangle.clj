@@ -15,8 +15,7 @@
 
 
 ;; entry point
-(let [n 7
-      (Integer/parseInt (read-line))]
+(let [n (Integer/parseInt (read-line))]
   (loop [i 1]
     (when (<= i n)
       (loop [k 1]
