@@ -5,8 +5,8 @@
 (deftest test-string-compression
   (testing "sample I/O."
     (is (= "abca3b3"
-           (string-compression "abcaaabbb"))
+           (string-compression "" (vec "abcaaabbb") 1))
         (= "abcd"
-           (string-compression "abcd"))
+           (string-compression "" (vec "abcd") 1))
         (= "a3ba4c2a4ba"
-           (string-compression "aaabaaaaccaaaaba")))))
+           (string-compression "" (vec "aaabaaaaccaaaaba") 1)))))
