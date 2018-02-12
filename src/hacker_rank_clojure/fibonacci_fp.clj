@@ -2,24 +2,24 @@
 
 
 (def N (+ 10000 1))
-(def DP (make-array Long/TYPE N))
-(def P 100000007)
+(def DP (atom [0N 1N]))
+(def P 100000007N)
 
 (defn fibonacci
   []
   "https://www.hackerrank.com/challenges/fibonacci-fp/problem"
-  (aset DP 1 1)  ; set bottom
   (loop [i 2]
     (when (< i N)
-      (aset DP i
-            (+ (aget DP (- i 1)) (aget DP (- i 2))))
+      (swap! DP conj (+ (nth @DP (- i 1))
+                        (nth @DP (- i 2))))
       (recur (inc i)))))
 
 ;; entry point
 (fibonacci)
-(let [dp (into [] DP)]
-  (loop [i 0
-         t (Integer/parseInt (read-line))]
-    (when (< i t)
-      (println (get dp (Integer/parseInt (read-line))))
-      (recur (inc i) t))))
+(loop [i 0
+       t (Integer/parseInt (read-line))]
+  (when (< i t)
+    (let [n (nth @DP (Integer/parseInt (read-line)))
+          m (rem n P)]
+      (println (format "%d" (biginteger m))))
+    (recur (inc i) t)))
