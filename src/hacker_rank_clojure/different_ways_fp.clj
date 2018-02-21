@@ -1,7 +1,7 @@
 (ns hacker-rank-clojure.different-ways-fp)
 
 
-(def N 10000)
+(def N 1000)
 (def S (- (/ (* (+ N 1) (+ N 2)) 2) 1))
 (def DP (atom (vec (repeat S 1N))))
 (def P 100000007N)
@@ -26,8 +26,9 @@
     (let [l (clojure.string/split (read-line) #" ")
           n (Integer/parseInt (first l))
           k (Integer/parseInt (second l))
-          c (nth @DP n)
-          v (nth c k)
+          p (- (/ (* n (inc n)) 2) 1)
+          q (+ p k)
+          v (nth @DP q)
           m (rem v P)]
       (println (format "%d" (biginteger m))))
     (recur (inc i) t)))
