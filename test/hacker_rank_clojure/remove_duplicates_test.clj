@@ -4,5 +4,5 @@
 
 (deftest test-remove-duplicates
   (testing "sample I/O."
-    (is (= "abc" (remove-duplicates "aabc"))
-        (= "cba" (remove-duplicates "ccbabacc")))))
+    (is (= "abc" (remove-duplicates [\a \a \b \c]))
+        (= "cba" (remove-duplicates [\c \c \b \a \b \a \c \c])))))
