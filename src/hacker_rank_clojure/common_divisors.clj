@@ -1,15 +1,16 @@
-(ns hacker-rank-clojure.common-divisors
-  (:require [clojure.set :as cset]))
-
+(ns hacker-rank-clojure.common-divisors)
 
 (defn divisors
   [n]
-  (loop [i 2
-         s #{1}]
+  (loop [i 1
+         e (int (Math/sqrt n))
+         t 0]
     (cond
-      (> i n) s
-      (= (rem n i) 0) (recur (inc i) (conj s i))
-      :else (recur (inc i) s))))
+      (> i e) t
+      (not= (rem n i) 0) (recur (inc i) e t)
+      :else (if (not= n (* i i))
+              (recur (inc i) e (+ t 2))
+              (recur (inc i) e (+ t 1))))))
 
 (defn gcd
   [a b]
@@ -18,9 +19,7 @@
 (defn common-divisors
   "https://www.hackerrank.com/challenges/common-divisors/problem"
   [l m]
-  (->> (gcd l m)
-       (divisors)
-       (count)))
+  (divisors (gcd l m)))
 
 ;; entry point
 (loop [i 0
