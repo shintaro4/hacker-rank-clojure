@@ -4,7 +4,7 @@
 
 (deftest test-subset-sum
   (testing "sample I/O."
-    (is (= 1 (subset-sum [12 10 8 4] 4))
-        (= 2 (subset-sum [12 10 8 4] 13))
-        (= 3 (subset-sum [12 10 8 4] 30))
-        (= -1 (subset-sum [12 10 8 4] 100)))))
+    (is (= 1 (subset-sum [4 8 10 12] 4))
+        (= 2 (subset-sum [4 8 10 12] 13))
+        (= 3 (subset-sum [4 8 10 12] 30))
+        (= -1 (subset-sum [4 8 10 12] 100)))))

@@ -3,22 +3,23 @@
 (defn subset-sum
   "https://www.hackerrank.com/challenges/subset-sum/problem"
   [xs s]
-  (loop [i 0
-         l (count xs)
-         n 0
+  (loop [i (- (count xs) 1)
+         n (long 0)
          c 0]
-    (cond
-      (>= i l) -1
-      (>= (+ n (nth xs i)) s) (inc c)
-      :else (recur (inc i) l (+ n (nth xs i)) (inc c)))))
+    (if (< i 0)
+      -1
+      (let [v (nth xs i)]
+        (if (>= (+ n v) s)
+          (inc c)
+          (recur (dec i) (+ n v) (inc c)))))))
 
 ;; entry point
 (let [_ (read-line)
       xs (->> (clojure.string/split (read-line) #" ")
-              (map #(Integer/parseInt %))
-              (sort >))]
+              (map #(Long/parseLong %))
+              (sort))]
   (loop [t (Integer/parseInt (read-line))
          i 0]
     (when (< i t)
-      (println (subset-sum xs (Integer/parseInt (read-line))))
+      (println (subset-sum xs (Long/parseLong (read-line))))
       (recur t (inc i)))))
